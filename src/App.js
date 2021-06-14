@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { PureComponent } from "react";
 import {
   LineChart,
   Line,
@@ -59,7 +59,7 @@ const dUv=Number(Math.sqrt(data.map(elem =>Math.pow((elem.uv-meanUV),2)).reduce(
 const meanPV=Number(data.map(elem=>elem.pv).reduce((a, b) => a + b, 0)/data.length)
 const dPv=Number(Math.sqrt(data.map(elem =>Math.pow((elem.pv-meanPV),2)).reduce((a, b) => a+b, 0)/(data.length-1)))
 
-const CustomizedDot: FunctionComponent <any> = (props: any) => {
+const CustomizedDot = (props) => {
   
   const { cx, cy, value, dataKey } = props;
   console.log(props)
@@ -107,8 +107,9 @@ function getPers(num){
     return (+num/(data.length+1))*100
   }
 
-export default function App() {
-  return (
+export default class App extends PureComponent {
+  render()
+  {return (
     <LineChart
       width={500}
       height={300}
@@ -159,5 +160,5 @@ export default function App() {
       />
       <Line type="monotone" dataKey="pv" stroke="url(#colorPv)" dot={<CustomizedDot/>} />
     </LineChart>
-  );
+  );}
 }
