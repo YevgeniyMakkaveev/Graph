@@ -62,6 +62,7 @@ const dPv=Number(Math.sqrt(data.map(elem =>Math.pow((elem.pv-meanPV),2)).reduce(
 const CustomizedDot: FunctionComponent <any> = (props: any) => {
   
   const { cx, cy, value, dataKey } = props;
+  console.log(props)
   
 let z;
 if(dataKey === 'uv'){
@@ -125,13 +126,13 @@ export default function App() {
           <stop offset="0%" stopColor="red"/>
           <stop offset={`${getPers(1)}%`} stopColor="red"/>
           <stop offset={`${getPers(1)}%`} stopColor="blue"/>
-          <stop offset={`${getPers(2)-3}%`} stopColor="blue"/>
+          <stop offset={`${getPers(2)}%`} stopColor="blue"/>
           <stop offset={`${getPers(2)}%`} stopColor="red"/>
-          <stop offset={`${getPers(3)-3}%`} stopColor="red"/>
+          <stop offset={`${getPers(3)}%`} stopColor="red"/>
           <stop offset={`${getPers(3)}%`} stopColor="blue"/>
-          <stop offset={`${getPers(4)-3}%`} stopColor="blue"/>
-          <stop offset={`${getPers(4)}%`} stopColor="red"/>
+          <stop offset={`${getPers(4)}%`} stopColor="blue"/>
           <stop offset={`${getPers(5)+4}%`} stopColor="red"/>
+          <stop offset={`${getPers(6)}%`} stopColor="red"/>
           <stop offset={`${getPers(6)}%`} stopColor="blue"/>
           <stop offset="100%" stopColor="blue"/>
         </linearGradient>
@@ -140,8 +141,8 @@ export default function App() {
           <stop offset="0%" stopColor="blue"/>
           <stop offset={`${getPers(1)-2}%`} stopColor="blue"/>
           <stop offset={`${getPers(1)}%`} stopColor="red"/>
-          <stop offset={`${getPers(3)-3}%`} stopColor="red"/>
-          <stop offset={`${getPers(3)}%`} stopColor="blue"/>
+          <stop offset={`${getPers(3)+3}%`} stopColor="red"/>
+          <stop offset={`${getPers(4)}%`} stopColor="blue"/>
           <stop offset="100%" stopColor="blue"/>
         </linearGradient>
       </defs>
