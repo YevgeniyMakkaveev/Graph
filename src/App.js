@@ -64,7 +64,8 @@ function GetZ(value, dataField){
   let res;
   if (dataField === 'uv') {
   res=Number((value-meanUV)/dUv)
-} else if(dataField === 'pv') { res=Number((value-meanPV)/dPv)} else if(res===Infinity){res=0} 
+} else if(dataField === 'pv') { res=Number((value-meanPV)/dPv)} 
+ 
 return res; 
 }
 function getPers(num){
@@ -78,8 +79,9 @@ const CustomizedDot = (props) => {
   const { cx, cy, value, dataKey } = props;
   
   
-const z=GetZ(value, dataKey);
+let z=GetZ(value, dataKey);
 
+if(z === Infinity){z=0}
 
 
   if (z>1||z<-1) {
