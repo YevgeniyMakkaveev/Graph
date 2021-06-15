@@ -9,6 +9,7 @@ import {
   Legend
 } from "recharts";
 
+
 const data = [
   {
     name: "Page A",
@@ -59,15 +60,26 @@ const dUv=Number(Math.sqrt(data.map(elem =>Math.pow((elem.uv-meanUV),2)).reduce(
 const meanPV=Number(data.map(elem=>elem.pv).reduce((a, b) => a + b, 0)/data.length)
 const dPv=Number(Math.sqrt(data.map(elem =>Math.pow((elem.pv-meanPV),2)).reduce((a, b) => a+b, 0)/(data.length-1)))
 
+function GetZ(value, dataField){
+  let res;
+  if (dataField === 'uv') {
+  res=Number((value-meanUV)/dUv)
+} else if(dataField === 'pv') { res=Number((value-meanPV)/dPv)} else if(res===Infinity){res=0} 
+return res; 
+}
+function getPers(num){
+    return (+num/(data.length+1))*100
+  }
+
+
+
 const CustomizedDot = (props) => {
   
   const { cx, cy, value, dataKey } = props;
-  console.log(props)
   
-let z;
-if(dataKey === 'uv'){
-  z=Number((value-meanUV)/dUv)
-} else if(dataKey === 'pv') { z=Number((value-meanPV)/dPv)}
+  
+const z=GetZ(value, dataKey);
+
 
 
   if (z>1||z<-1) {
@@ -103,16 +115,16 @@ if(dataKey === 'uv'){
 };
 
 
-function getPers(num){
-    return (+num/(data.length+1))*100
-  }
+
 
 export default class App extends PureComponent {
   render()
   {return (
+    
     <LineChart
-      width={500}
-      height={300}
+    
+      width={1000}
+      height={600}
       data={data}
       margin={{
         top: 5,
