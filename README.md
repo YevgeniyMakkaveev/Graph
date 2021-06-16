@@ -1,3 +1,4 @@
+Тестовое задание. Добавлена функция добавления точек в зависимости от z и покрашена линия. В целом хороший опыт, но от библиотеки смешанные чувства, хотя я скорее привык к более сложным редакторам графиков, а для веба такого функционала, что есть в exel grapher и более сложных программах не нужно. 
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
